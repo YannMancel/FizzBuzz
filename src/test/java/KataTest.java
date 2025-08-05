@@ -25,11 +25,13 @@ class KataTest {
     void should_display_number(int value, Object output) {
         assertThat(value)
             .isBetween(1, 100)
-            .extracting((e) -> !Kata.isDivisibleBy3(e) && !Kata.isDivisibleBy5(e)
-                ? e
-                : "%s%s".formatted(
-                    Kata.isDivisibleBy3(e) ? "Fizz" : "",
-                    Kata.isDivisibleBy5(e) ? "Buzz" : "")
+            .extracting((e) -> Kata.isDivisibleBy3(e) && Kata.isDivisibleBy5(e)
+                ? "FizzBuzz"
+                : Kata.isDivisibleBy3(e) || String.valueOf(e).contains(String.valueOf(3))
+                    ? "Fizz"
+                    : Kata.isDivisibleBy5(e)
+                        ? "Buzz"
+                        : e
             )
             .isEqualTo(output);
     }

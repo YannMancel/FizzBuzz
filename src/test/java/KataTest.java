@@ -18,9 +18,9 @@ class KataTest {
     void should_display_number(int value) {
         assertThat(value)
                 .isBetween(1, 100)
-                .extracting((e) -> e % 3 == 0
+                .extracting((e) -> Kata.isFizz(e)
                         ? "Fizz"
-                        : e % 5 == 0
+                        : Kata.isBuzz(e)
                             ? "Buzz"
                             : e)
                 .isEqualTo(Kata.fizzBuzz(value));

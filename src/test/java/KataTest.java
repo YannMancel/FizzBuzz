@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
 
 class KataTest {
 
@@ -17,7 +16,8 @@ class KataTest {
     @ParameterizedTest(name = "{index} -> Number is {0}")
     @MethodSource("iterateFrom1To100")
     void should_display_number(int value) {
-        assertThat(value).isBetween(1, 100);
-        fail();
+        assertThat(value)
+                .isBetween(1, 100)
+                .isEqualTo(Kata.fizzBuzz(value));
     }
 }

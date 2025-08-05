@@ -18,7 +18,7 @@ public class Kata {
     }
 
     public static boolean canDisplayBuzz(int value) {
-        return isDivisibleBy5(value);
+        return isDivisibleBy5(value) || contains5(value);
     }
 
     public static boolean isDivisibleBy3(int value) {
@@ -31,5 +31,9 @@ public class Kata {
 
     public static boolean contains3(int value) {
         return String.valueOf(value).contains(String.valueOf(3));
+    }
+
+    public static boolean contains5(int value) {
+        return String.valueOf(value).contains(String.valueOf(5));
     }
 }

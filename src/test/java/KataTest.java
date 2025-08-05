@@ -29,7 +29,7 @@ class KataTest {
                 ? "FizzBuzz"
                 : Kata.isDivisibleBy3(e) || Kata.contains3(e)
                     ? "Fizz"
-                    : Kata.isDivisibleBy5(e) || String.valueOf(e).contains(String.valueOf(5))
+                    : Kata.isDivisibleBy5(e) || Kata.contains5(e)
                         ? "Buzz"
                         : e
             )

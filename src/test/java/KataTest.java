@@ -27,7 +27,7 @@ class KataTest {
             .isBetween(1, 100)
             .extracting((e) -> Kata.isDivisibleBy3(e) && Kata.isDivisibleBy5(e)
                 ? "FizzBuzz"
-                : Kata.isDivisibleBy3(e) || String.valueOf(e).contains(String.valueOf(3))
+                : Kata.isDivisibleBy3(e) || Kata.contains3(e)
                     ? "Fizz"
                     : Kata.isDivisibleBy5(e)
                         ? "Buzz"

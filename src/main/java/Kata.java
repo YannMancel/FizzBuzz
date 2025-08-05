@@ -1,18 +1,20 @@
 public class Kata {
     public static Object fizzBuzz(int value) {
-        return canReturnValue(value)
-            ? value
-            : "%s%s".formatted(
-                canDisplayFizz(value) ? "Fizz" : "",
-                canDisplayBuzz(value) ? "Buzz" : "");
+        return canDisplayFizzBuzz(value)
+            ? "FizzBuzz"
+            : canDisplayFizz(value)
+                ? "Fizz"
+                : canDisplayBuzz(value)
+                    ? "Buzz"
+                    : value;
     }
 
-    public static boolean canReturnValue(int value) {
-        return !isDivisibleBy3(value) && !isDivisibleBy5(value);
+    public static boolean canDisplayFizzBuzz(int value) {
+        return isDivisibleBy3(value) && isDivisibleBy5(value);
     }
 
     public static boolean canDisplayFizz(int value) {
-        return isDivisibleBy3(value);
+        return isDivisibleBy3(value) || contains3(value);
     }
 
     public static boolean canDisplayBuzz(int value) {
@@ -25,5 +27,9 @@ public class Kata {
 
     public static boolean isDivisibleBy5(int value) {
         return value % 5 == 0;
+    }
+
+    public static boolean contains3(int value) {
+        return String.valueOf(value).contains(String.valueOf(3));
     }
 }

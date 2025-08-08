@@ -36,4 +36,15 @@ public class Kata {
     public static boolean contains5(int value) {
         return String.valueOf(value).contains(String.valueOf(5));
     }
+
+    public static String compute(int[] values) {
+        final StringBuilder buffer = new StringBuilder(values.length);
+        for (int value : values) {
+            buffer.append(value);
+            buffer.append(" -> ");
+            buffer.append(fizzBuzz(value));
+            buffer.append("\n");
+        }
+        return buffer.toString();
+    }
 }

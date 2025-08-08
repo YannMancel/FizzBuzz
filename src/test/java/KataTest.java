@@ -4,7 +4,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -50,18 +49,17 @@ class KataTest {
         "Then displays correct output")
     @Test
     void should_display_correct_output_when_compute_is_called() {
-        final List<Integer> inputs = iterateFrom1To100()
-            .boxed()
-            .toList();
+        final int[] inputs = iterateFrom1To100().toArray();
+        final StringBuilder builder = new StringBuilder(inputs.length);
+        for (int input : inputs) {
+            builder.append(input);
+            builder.append(" -> ");
+            builder.append(Kata.fizzBuzz(input));
+            builder.append("\n");
+        }
 
-        final StringBuilder buffer = new StringBuilder(inputs.size());
-        inputs.forEach((input) -> {
-            final String line = "input: " + input + " -> output: " + getExpectedOutput(input) + "\n";
-            buffer.append(line);
-        });
-
-        assertThat(buffer.toString())
+        assertThat(builder.toString())
             .isNotEmpty()
-            .isEqualTo("foo");
+            .isEqualTo(Kata.compute(inputs));
     }
 }

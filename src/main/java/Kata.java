@@ -1,12 +1,9 @@
 public class Kata {
     public static Object fizzBuzz(int value) {
-        return canDisplayFizzBuzz(value)
-            ? "FizzBuzz"
-            : canDisplayFizz(value)
-                ? "Fizz"
-                : canDisplayBuzz(value)
-                    ? "Buzz"
-                    : value;
+        if (canDisplayFizzBuzz(value)) return "FizzBuzz";
+        if (canDisplayFizz(value)) return "Fizz";
+        if (canDisplayBuzz(value)) return "Buzz";
+        return value;
     }
 
     public static boolean canDisplayFizzBuzz(int value) {

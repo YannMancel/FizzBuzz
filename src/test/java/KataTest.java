@@ -21,13 +21,10 @@ class KataTest {
     }
 
     Object getExpectedOutput(int input) {
-        return Kata.isDivisibleBy3(input) && Kata.isDivisibleBy5(input)
-            ? "FizzBuzz"
-            : Kata.isDivisibleBy3(input) || Kata.contains3(input)
-                ? "Fizz"
-                : Kata.isDivisibleBy5(input) || Kata.contains5(input)
-                    ? "Buzz"
-                    : input;
+        if (Kata.isDivisibleBy3(input) && Kata.isDivisibleBy5(input)) return "FizzBuzz";
+        if (Kata.isDivisibleBy3(input) || Kata.contains3(input)) return "Fizz";
+        if (Kata.isDivisibleBy5(input) || Kata.contains5(input)) return "Buzz";
+        return input;
     }
 
     @DisplayName(

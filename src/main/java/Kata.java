@@ -1,47 +1,33 @@
+import java.util.List;
+
 public class Kata {
-    public static Object fizzBuzz(int value) {
-        if (canDisplayFizzBuzz(value)) return "FizzBuzz";
-        if (canDisplayFizz(value)) return "Fizz";
-        if (canDisplayBuzz(value)) return "Buzz";
-        return value;
+    public static String fizzBuzz(KataInput input) {
+        if (canDisplayFizzBuzz(input)) return "FizzBuzz";
+        if (canDisplayFizz(input)) return "Fizz";
+        if (canDisplayBuzz(input)) return "Buzz";
+        return input.toString();
     }
 
-    public static boolean canDisplayFizzBuzz(int value) {
-        return isDivisibleBy3(value) && isDivisibleBy5(value);
+    private static boolean canDisplayFizzBuzz(KataInput input) {
+        return input.isDivisibleBy3() && input.isDivisibleBy5();
     }
 
-    public static boolean canDisplayFizz(int value) {
-        return isDivisibleBy3(value) || contains3(value);
+    private static boolean canDisplayFizz(KataInput input) {
+        return input.isDivisibleBy3() || input.contains3();
     }
 
-    public static boolean canDisplayBuzz(int value) {
-        return isDivisibleBy5(value) || contains5(value);
+    private static boolean canDisplayBuzz(KataInput input) {
+        return input.isDivisibleBy5() || input.contains5();
     }
 
-    public static boolean isDivisibleBy3(int value) {
-        return value % 3 == 0;
-    }
-
-    public static boolean isDivisibleBy5(int value) {
-        return value % 5 == 0;
-    }
-
-    public static boolean contains3(int value) {
-        return String.valueOf(value).contains(String.valueOf(3));
-    }
-
-    public static boolean contains5(int value) {
-        return String.valueOf(value).contains(String.valueOf(5));
-    }
-
-    public static String compute(int[] values) {
-        final StringBuilder buffer = new StringBuilder(values.length);
-        for (int value : values) {
-            buffer.append(value);
-            buffer.append(" -> ");
-            buffer.append(fizzBuzz(value));
-            buffer.append("\n");
+    public static String compute(List<KataInput> inputs) {
+        final StringBuilder builder = new StringBuilder(inputs.size());
+        for (KataInput input : inputs) {
+            builder.append(input);
+            builder.append(" -> ");
+            builder.append(fizzBuzz(input));
+            builder.append("\n");
         }
-        return buffer.toString();
+        return builder.toString();
     }
 }

@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.Collection;
 
 public class Kata {
     public static String fizzBuzz(KataInput input) {
@@ -20,7 +20,7 @@ public class Kata {
         return input.isDivisibleBy5() || input.contains5();
     }
 
-    public static String compute(List<KataInput> inputs) {
+    public static String compute(Collection<KataInput> inputs) {
         final StringBuilder builder = new StringBuilder(inputs.size());
         for (KataInput input : inputs) {
             builder.append(input);

@@ -5,7 +5,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -53,7 +54,7 @@ class KataTest {
         "Then displays correct output")
     @Test
     void should_display_correct_output_when_compute_is_called() {
-        final List<KataInput> inputs = iterateFrom1To100().toList();
+        final Set<KataInput> inputs = iterateFrom1To100().collect(Collectors.toSet());
         final StringBuilder builder = new StringBuilder(inputs.size());
         for (KataInput input : inputs) {
             builder.append(input);
